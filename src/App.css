@@ -1,38 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+*{
+  font-family: 'vt323';
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-image: url('./assets/background.png');
+  background-position: bottom;
 }
 
-.App-link {
-  color: #61dafb;
+.App main{
+  width: 90%;
+  max-width: 30rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App main input{
+  display: block;
+  margin: 1rem auto;
 }
+
+.App main ul{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.buttons button{
+  border: 1px solid gray;
+  margin: 0 1rem;
+  padding: .5rem 1.5rem;
+}
+@media screen and ( min-width: 1024px){
+  .App{
+    height: 100vh;
+  }
+  .App main{
+    max-width: 50rem;
+  }
+  .App main ul{
+    grid-template-columns: repeat(5, 1fr);
+  }
+ }
