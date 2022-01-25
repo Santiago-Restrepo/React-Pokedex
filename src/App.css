@@ -8,35 +8,37 @@ body{
 }
 
 .App {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  font-size: 1.2rem;
   background-image: url('./assets/background.png');
   background-position: bottom;
 }
 
 .App main{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 90%;
   max-width: 25rem;
 }
-
-.App main input{
+.App h1{
   display: block;
+  max-width: 15rem;
+  text-align: center;
   margin: 1rem auto;
   padding: .5rem 2rem;
-  background-image: url('./assets/search.png');
-  background-size: 1rem;
-  background-position: .5rem center;
-  background-repeat: no-repeat;
   font-size: 1.4rem;
-  border: none;
+  color: #10645d;
   background-color: rgba(255, 255, 255, 0.63);
-  color: #AEAEAE;
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
-  outline: white;
   border: 2px solid white;
   border-radius: 1rem;
 }
@@ -98,7 +100,11 @@ body{
   cursor: not-allowed;
   transform: scale(.9);
 }
-
+@media screen and ( min-width: 768px){
+  .App{
+    font-size: 1.3rem;
+  }
+}
 
 @media screen and ( min-width: 1024px){
   .App{
@@ -106,10 +112,24 @@ body{
     font-size: 1.3rem;
   }
   .App main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 1;
     max-width: 50rem;
+  }
+  .App main.slideOn{
+    max-width: 60rem;
+    overflow-y: visible;
+    height: auto;
   }
   .App main ul{
     grid-template-columns: repeat(5, 1fr);
+  }
+  .App main.slideOn ul {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 30rem;
+
   }
   .App main input{
     margin-bottom: 3rem;

@@ -7,29 +7,31 @@ import './App.css';
 export const App = ()=> {
 
   const [pokemonList, setPokemonList] = useState({
-    offset: -10,
-    limitPerPage: 10,
-    list: []
+    list : [],
+    prev: null,
+    next: null,
+    offset: 0,
   });
 
   const [pokemonDetails, setPokemonDetails] = useState(null);
 
-  const fetchPokemonList = async ({direction}) => {
-    let step;
-    direction === 'prev' ? step = -10 : step = 10;
-    let url = `https://pokeapi.co/api/v2/pokemon?offset=${pokemonList.offset + step}&limit=${pokemonList.limitPerPage}`;
+  const LIMITPOKEMONGENERATION = 151;
+
+  const fetchPokemonList = async (url) => {
     try {
       let pokemonListResponse = await fetch(url);
       let pokemonListJson = await pokemonListResponse.json();
-      let pokemonPromises = pokemonListJson.results.map(pokemon => fetch(pokemon.url));        
+      let pokemonPromises = pokemonListJson.results.map(pokemon => fetch(pokemon.url));
+      let newOffset = (new URL(url)).searchParams.get('offset');
       
       Promise.all(pokemonPromises).then(values => {
-        let valuesPromises = values.map(async (response) => await response.json());
+        let valuesPromises = values.map((response) => response.json());
         Promise.all(valuesPromises).then(jsonValues =>{
           setPokemonList({
-            offset: pokemonList.offset + step,
-            limitPerPage: 10,
-            list: jsonValues
+            list: jsonValues.filter(pokemon => pokemon.id <= LIMITPOKEMONGENERATION),
+            prev: pokemonListJson.previous,
+            next: pokemonListJson.next,
+            offset: newOffset
           });
         })
       });
@@ -38,26 +40,28 @@ export const App = ()=> {
     }
   }
 
-  useEffect(() =>{fetchPokemonList('next')}, []);
+  useEffect(() =>{
+    fetchPokemonList('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10')
+  }, []);
 
   return (
     <Context.Provider value={{setPokemonDetails}}>
       <div className="App">
-        <main>
-          <input placeholder='Search Pokemon' type='text'/>
+        <h1>First Pokemon Generation</h1>
+        <main className={pokemonDetails != null ? 'slideOn' : null}>
           <section className='pokemonList'>
             <ul >
             {
-              pokemonList.list.length != 0 ? pokemonList.list.map(pokemon => <PokemonCard key={pokemon.name} pokemonInfo={pokemon} set/>)
+              pokemonList.list.length ? pokemonList.list.map(pokemon => <PokemonCard key={pokemon.name} pokemonInfo={pokemon} set/>)
               : null
             }
             </ul>
             <div className='buttons'>
-              <button onClick={()=>{fetchPokemonList({direction: 'prev'})}} disabled={pokemonList.offset === 0}>prev</button>
-              <button onClick={()=>{fetchPokemonList({direction: 'next'})}}>next</button>
+              <button onClick={()=>{fetchPokemonList(pokemonList.prev)}} disabled={pokemonList.prev === null}>prev</button>
+              <button onClick={()=>{fetchPokemonList(pokemonList.next)}} disabled={pokemonList.offset > LIMITPOKEMONGENERATION - 10} >next</button>
             </div>
           </section>
-          <section className='pokemonDetails'>
+          <section className={pokemonDetails != null ? 'pokemonDetails slideOn': 'pokemonDetails'}>
             {
               pokemonDetails ? <PokemonDetails pokemon={pokemonDetails}/>
               :null
