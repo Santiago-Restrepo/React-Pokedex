@@ -19,12 +19,29 @@ body{
 
 .App main{
   width: 90%;
-  max-width: 30rem;
+  max-width: 25rem;
 }
 
 .App main input{
   display: block;
   margin: 1rem auto;
+  padding: .5rem 2rem;
+  background-image: url('./assets/search.png');
+  background-size: 1rem;
+  background-position: .5rem center;
+  background-repeat: no-repeat;
+  font-size: 1.4rem;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.63);
+  color: #AEAEAE;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  outline: white;
+  border: 2px solid white;
+  border-radius: 1rem;
+}
+.App main input::placeholder{
+  color: #adadad;
 }
 
 .App main ul{
@@ -45,13 +62,48 @@ body{
 }
 
 .buttons button{
-  border: 1px solid gray;
   margin: 0 1rem;
   padding: .5rem 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 3px solid white;
+  font-weight: 600;
+  border-radius: .5rem;
+  background-color: rgba(255, 255, 255, 0.377);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  transition: transform .3s;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.514);
+
 }
+.buttons button:hover{
+  transform: scale(.95);
+}
+
+.buttons button:nth-of-type(1){
+  color: rgb(231, 68, 68);
+}
+
+.buttons button:nth-of-type(2){
+  color: rgb(41, 126, 41);
+}
+
+.buttons button:disabled{
+  border: 3px solid rgb(189, 189, 189);
+  color: rgb(129, 129, 129);
+  font-weight: 500;
+  background-color: rgba(184, 184, 184, 0.425);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  cursor: not-allowed;
+  transform: scale(.9);
+}
+
+
 @media screen and ( min-width: 1024px){
   .App{
     height: 100vh;
+    font-size: 1.3rem;
   }
   .App main{
     max-width: 50rem;
@@ -59,4 +111,20 @@ body{
   .App main ul{
     grid-template-columns: repeat(5, 1fr);
   }
+  .App main input{
+    margin-bottom: 3rem;
+  }
+  .buttons{
+    margin-top: 3rem;
+  }
+  .buttons button{
+    font-size: 1.5rem;
+  }
  }
+
+ @media screen and ( min-width: 1290px){
+
+  .App main{
+    max-width: 70rem;
+  }
+}
