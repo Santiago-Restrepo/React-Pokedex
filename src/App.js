@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {PokemonCard} from './components/PokemonCard'
-import {PokemonDetails, pokemonDetails} from './components/PokemonDetails'
+import {PokemonDetails} from './components/PokemonDetails'
 import { Context } from './Context';
 import './App.css';
 
