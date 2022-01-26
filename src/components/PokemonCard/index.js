@@ -8,7 +8,7 @@ export const PokemonCard = ({pokemonInfo})=>{
     return (
         <li className="pokemonCard" onClick={()=>{setPokemonDetails(pokemonInfo)}}>
             <div className="pokemonCard__id">
-                <img alt='Imagen de Pokeball' src={pokeballImage}/>
+                <img alt='Imagen de Pokeball' src={pokeballImage} className="pokeballImage"/>
                 <span>{`No. ${pokemonInfo.id}`}</span>
             </div>
             <div className="pokemonCard__image">

@@ -14,12 +14,14 @@
     transition: 0.3s ease;
     transform: translateX(-100%);
     visibility: hidden;
+    border-radius: 1rem;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.363);
 }
 .pokemonDetails.slideOn {
     transform: translateX(0);
     visibility: visible;
     margin: auto;
+    border-radius: 1rem;
 }
 
 .pokemonDetails .closeButton {
@@ -32,6 +34,11 @@ border: 2px solid white;
 background-color: tomato;
 color: white;
 cursor: pointer;
+transition: transform .3s;
+}
+
+.pokemonDetails .closeButton:hover{
+    transform: scale(.9);
 }
 
 
@@ -155,7 +162,6 @@ background-color: #1552e2;
 }
 @media screen and (min-width: 1024px) {
     .pokemonDetails {
-        z-index: 2;
         position: relative;
         max-width: 15rem;
         margin-left: 1rem;
