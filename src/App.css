@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-*{
-  font-family: 'vt323';
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+* {
+  font-family: "vt323";
 }
-body{
+body {
   margin: 0;
   padding: 0;
 }
@@ -15,12 +15,11 @@ body{
   width: 100%;
   min-height: 100vh;
   font-size: 1.2rem;
-  background-image: url('./assets/background.png');
+  background-image: url("./assets/background.png");
   background-position: bottom;
 }
 
-.App main{
-
+.App main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,25 +27,9 @@ body{
   width: 90%;
   max-width: 25rem;
 }
-.App h1{
-  display: block;
-  max-width: 15rem;
-  text-align: center;
-  margin: 1rem auto;
-  padding: .5rem 2rem;
-  font-size: 1.4rem;
-  color: #10645d;
-  background-color: rgba(255, 255, 255, 0.63);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border: 2px solid white;
-  border-radius: 1rem;
-}
-.App main input::placeholder{
-  color: #adadad;
-}
 
-.App main ul{
+
+.App main ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
@@ -56,41 +39,44 @@ body{
   list-style: none;
 }
 
-.buttons{
+.App .searchPokemon .suggestedList.show{
+  display: flex;
+  flex-direction: column;
+}
+.buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1rem 0;
 }
 
-.buttons button{
+.buttons button {
   margin: 0 1rem;
-  padding: .5rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   font-size: 1.2rem;
   cursor: pointer;
   border: 3px solid white;
   font-weight: 600;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: rgba(255, 255, 255, 0.377);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
-  transition: transform .3s;
+  transition: transform 0.3s;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.514);
-
 }
-.buttons button:hover{
-  transform: scale(.95);
+.buttons button:hover {
+  transform: scale(0.95);
 }
 
-.buttons button:nth-of-type(1){
+.buttons button:nth-of-type(1) {
   color: rgb(231, 68, 68);
 }
 
-.buttons button:nth-of-type(2){
+.buttons button:nth-of-type(2) {
   color: rgb(41, 126, 41);
 }
 
-.buttons button:disabled{
+.buttons button:disabled {
   border: 3px solid rgb(189, 189, 189);
   color: rgb(129, 129, 129);
   font-weight: 500;
@@ -98,53 +84,50 @@ body{
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
   cursor: not-allowed;
-  transform: scale(.9);
+  transform: scale(0.9);
 }
-@media screen and ( min-width: 768px){
-  .App{
+@media screen and (min-width: 768px) {
+  .App {
     font-size: 1.3rem;
   }
 }
 
-@media screen and ( min-width: 1024px){
-  .App{
-    height: 100vh;
+@media screen and (min-width: 1024px) {
+  .App {
     font-size: 1.3rem;
   }
-  .App main{
+  .App main {
     display: flex;
     flex-direction: row;
     justify-content: center;
     z-index: 1;
     max-width: 50rem;
   }
-  .App main.slideOn{
+  .App main.slideOn {
     max-width: 60rem;
     overflow-y: visible;
     height: auto;
   }
-  .App main ul{
+  .App main ul {
     grid-template-columns: repeat(5, 1fr);
   }
   .App main.slideOn ul {
     grid-template-columns: repeat(4, 1fr);
     max-width: 30rem;
-
   }
-  .App main input{
+  .App main input {
     margin-bottom: 3rem;
   }
-  .buttons{
+  .buttons {
     margin-top: 3rem;
   }
-  .buttons button{
+  .buttons button {
     font-size: 1.5rem;
   }
- }
+}
 
- @media screen and ( min-width: 1290px){
-
-  .App main{
+@media screen and (min-width: 1290px) {
+  .App main {
     max-width: 70rem;
   }
 }

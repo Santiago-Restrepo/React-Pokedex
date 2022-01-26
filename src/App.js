@@ -3,6 +3,7 @@ import {PokemonCard} from './components/PokemonCard'
 import {PokemonDetails} from './components/PokemonDetails'
 import { Context } from './Context';
 import './App.css';
+import { SearchPokemon } from './components/SearchPokemon';
 
 export const App = ()=> {
 
@@ -36,7 +37,7 @@ export const App = ()=> {
         })
       });
     } catch (error) {
-      console.error(error);
+      console.error(`Error on App.js fetching ${url} \n Complete message error: ${error}`);
     }
   }
 
@@ -45,9 +46,9 @@ export const App = ()=> {
   }, []);
 
   return (
-    <Context.Provider value={{setPokemonDetails}}>
+    <Context.Provider value={{pokemonDetails, setPokemonDetails}}>
       <div className="App">
-        <h1>First Pokemon Generation</h1>
+        <SearchPokemon/>
         <main className={pokemonDetails != null ? 'slideOn' : null}>
           <section className='pokemonList'>
             <ul >
