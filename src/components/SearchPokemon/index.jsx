@@ -12,7 +12,7 @@ export const SearchPokemon = ()=>{
       const searchResponseJson = await searchResponse.json();
       const filteredResults = searchResponseJson.pokemon_species.filter(pokemon => pokemon.name.toLowerCase().includes(e.target.value.toLowerCase()) && e.target.value !== '');
       e.keyCode === 13 && fetchChosenPokemon(e.target.value.toLowerCase(), searchResponseJson.pokemon_species);
-      setSuggestedList(filteredResults);
+      setSuggestedList(e.keyCode === 27 ? [] : filteredResults);
     } catch (error) {
       console.error(`Error on SearchPokemon.jsx fetching https://pokeapi.co/api/v2/generation/1 \nComplete message error: ${error}`);  
     }
